@@ -30,6 +30,16 @@ sap.ui.define(
           [fUnitPrice * iStockLevel, sCurrCode],
           'string'
         );
+      },
+      onItemSelected: function (oEvent) {
+        var oSelectedItem = oEvent.getSource();
+        var oContext = oSelectedItem.getBindingContext('products');
+        var sPath = oContext.getPath();
+        var oProductDetailPanel = this.byId('productDetailsPanel');
+        oProductDetailPanel.bindElement({
+          path: sPath,
+          model: 'products'
+        });
       }
     });
   }
